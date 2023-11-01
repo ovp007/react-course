@@ -1,9 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 
-import axios from "axios";
 import { getMovies } from "./api/apiMovies";
 
-const BASE_URL = "http://www.omdbapi.com/?i=tt3896198&apikey=f0a43603";
+// const BASE_URL = "http://www.omdbapi.com/apikey=f0a43603";
 
 export function useMovies(query) {
   return useQuery({
@@ -22,4 +21,6 @@ export function useMovies(query) {
       return response.data;
     },
   });
+  // console.log(`x: ${x}`);
+  // return x;
 }
