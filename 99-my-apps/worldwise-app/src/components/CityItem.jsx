@@ -15,7 +15,7 @@ function CityItem({ city }) {
   return (
     <li>
       <NavLink
-        to={`${city.id}?lat=${city.position.lat}&log=${city.position.lat}`}
+        to={`${city.id}?lat=${city.position.lat}&lng=${city.position.lng}`}
         className={styles.cityItem}
       >
         <span className={styles.emoji}> {emoji}</span>

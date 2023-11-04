@@ -3,6 +3,9 @@
 import { useState } from "react";
 
 import styles from "./Form.module.css";
+import { useSearchParams } from "react-router-dom";
+import BackButton from "./BackButton";
+import Button from "./Button";
 
 export function convertToEmoji(countryCode) {
   const codePoints = countryCode
@@ -17,6 +20,9 @@ function Form() {
   const [country, setCountry] = useState("");
   const [date, setDate] = useState(new Date());
   const [notes, setNotes] = useState("");
+  // const [searchParams, setSearchParams] = useSearchParams();
+  // const lat = searchParams.get("lat");
+  // const lng = searchParams.get("lng");
 
   return (
     <form className={styles.form}>
@@ -49,8 +55,8 @@ function Form() {
       </div>
 
       <div className={styles.buttons}>
-        <button>Add</button>
-        <button>&larr; Back</button>
+        <Button type="primary">Add</Button>
+        <BackButton />
       </div>
     </form>
   );
