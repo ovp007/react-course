@@ -1,12 +1,14 @@
 import React from "react";
 import AddPostForm from "./AddPostForm";
 import PostList from "./PostList";
+import Archive from "./Archive";
 
-function Main({ posts }) {
+function Main() {
   return (
     <main>
       <AddPostForm />
-      <PostList posts={posts} />
+      <PostList />
+      <Archive />
     </main>
   );
 }
