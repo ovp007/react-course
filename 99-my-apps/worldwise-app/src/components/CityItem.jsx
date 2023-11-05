@@ -1,9 +1,11 @@
 import React from "react";
 import styles from "./CityItem.module.css";
 import { NavLink } from "react-router-dom";
+import { useCities } from "../contexts/useCities";
 
 function CityItem({ city }) {
-  const { cityName, emoji, date } = city;
+  const { cityName, emoji, date, id, position } = city;
+  const { currentCity } = useCities();
   const formatDate = (date) => {
     new Intl.DateTimeFormat("en", {
       day: "numeric",
@@ -15,8 +17,10 @@ function CityItem({ city }) {
   return (
     <li>
       <NavLink
-        to={`${city.id}?lat=${city.position.lat}&lng=${city.position.lng}`}
-        className={styles.cityItem}
+        className={`${styles.cityItem} ${
+          id === currentCity.id ? styles["cityItem--active"] : ""
+        }`}
+        to={`${id}?lat=${position.lat}&lng=${position.lng}`}
       >
         <span className={styles.emoji}> {emoji}</span>
         <h3 className={styles.name}>{cityName}</h3>
