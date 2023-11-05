@@ -22,5 +22,5 @@ export function useCities() {
     fetchCities();
   }, []);
 
-  return { cities, isLoading };
+  return { cities, setCities, isLoading };
 }

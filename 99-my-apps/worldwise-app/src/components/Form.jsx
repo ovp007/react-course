@@ -6,6 +6,7 @@ import styles from "./Form.module.css";
 import { useSearchParams } from "react-router-dom";
 import BackButton from "./BackButton";
 import Button from "./Button";
+import { useCities } from "../hooks/useCities";
 
 export function convertToEmoji(countryCode) {
   const codePoints = countryCode
@@ -20,9 +21,26 @@ function Form() {
   const [country, setCountry] = useState("");
   const [date, setDate] = useState(new Date());
   const [notes, setNotes] = useState("");
-  // const [searchParams, setSearchParams] = useSearchParams();
-  // const lat = searchParams.get("lat");
-  // const lng = searchParams.get("lng");
+  const [searchParams, setSearchParams] = useSearchParams();
+  const lat = searchParams.get("lat");
+  const lng = searchParams.get("lng");
+  const { cities, setCities } = useCities();
+
+  const handleAddCity = () => {
+    const newCity = {
+      cityName,
+      country,
+      emoji: convertToEmoji(country),
+      date,
+      notes,
+      position: {
+        lat,
+        lng,
+      },
+      id: Math.random(1000).toString(),
+    };
+    setCities({ ...cities, newCity });
+  };
 
   return (
     <form className={styles.form}>
@@ -55,7 +73,9 @@ function Form() {
       </div>
 
       <div className={styles.buttons}>
-        <Button type="primary">Add</Button>
+        <Button type="primary" onClick={handleAddCity}>
+          Add
+        </Button>
         <BackButton />
       </div>
     </form>
