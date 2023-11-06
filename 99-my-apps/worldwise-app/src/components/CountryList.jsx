@@ -1,8 +1,9 @@
 import React from "react";
 import styles from "./CountryList.module.css";
-import { useCities } from "../hooks/useCities";
+
 import CountryItem from "./CountryItem";
 import Spinner from "./Spinner";
+import { useCities } from "../contexts/useCities";
 
 function CountryList() {
   const { cities, isLoading } = useCities();

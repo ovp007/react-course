@@ -10,9 +10,10 @@ import {
   useMap,
   useMapEvent,
 } from "react-leaflet";
-import { useCities } from "../hooks/useCities";
+
 import { useGeolocation } from "../hooks/useGeolocation";
 import Button from "./Button";
+import { useCities } from "../contexts/useCities";
 
 function Map() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -38,7 +39,7 @@ function Map() {
         className={styles.map}
         center={mapPosition}
         zoom={6}
-        scrollWheelZoom={false}
+        scrollWheelZoom={true}
       >
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
