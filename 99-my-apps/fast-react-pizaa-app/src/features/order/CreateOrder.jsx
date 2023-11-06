@@ -1,5 +1,7 @@
 // import { useState } from "react";
 
+import { useState } from "react";
+
 // https://uibakery.io/regex-library/phone-number
 const isValidPhone = (str) =>
   /^\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}$/.test(
@@ -32,29 +34,52 @@ const fakeCart = [
 
 function CreateOrder() {
   // const [withPriority, setWithPriority] = useState(false);
+  const [user, setUser] = useState();
   const cart = fakeCart;
 
+  const handleChange = (e) => {
+    setUser({ ...user, [e.target.name]: e.target.value });
+  };
+
+  const handleCreateOrder = (e) => {
+    e.preventDefault();
+  };
   return (
     <div>
       <h2>Ready to order? Lets go!</h2>
 
-      <form>
+      <form onSubmit={handleCreateOrder}>
         <div>
           <label>First Name</label>
-          <input type="text" name="customer" required />
+          <input
+            type="text"
+            name="customer"
+            required
+            onChange={(e) => handleChange(e)}
+          />
         </div>
 
         <div>
           <label>Phone number</label>
           <div>
-            <input type="tel" name="phone" required />
+            <input
+              type="tel"
+              name="phone"
+              required
+              onChange={(e) => handleChange(e)}
+            />
           </div>
         </div>
 
         <div>
           <label>Address</label>
           <div>
-            <input type="text" name="address" required />
+            <input
+              type="text"
+              name="address"
+              required
+              onChange={(e) => handleChange(e)}
+            />
           </div>
         </div>
 
